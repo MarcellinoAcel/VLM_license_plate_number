@@ -1,25 +1,30 @@
 import os
 import csv
+import json
 import base64
-import requests
-from PIL import Image
-import lmstudio as lms
 import difflib
+import requests
 from tqdm import tqdm
+import lmstudio as lms
 
 # === Konfigurasi ===
 DATASET_DIR = r"C:\Users\user\Documents\coding\python\computer_vision\VLM_license_plate_number\Indonesian License Plate Recognition Dataset\images\test"
 GROUND_TRUTH_CSV = r"C:\Users\user\Documents\coding\python\computer_vision\VLM_license_plate_number\Indonesian License Plate Recognition Dataset\ground_truth.csv"
 OUTPUT_CSV = "ocr_result.csv"
 SERVER_API_HOST = "localhost:1234"
+"""
+Server bisa menggunakan
+* 127.0.0.1
+* localhost
+"""
 SERVER_URL = "http://localhost:1234/v1/chat/completions"
 VLM_MODEL_NAME = "qwen2-vl-2b-instruct"
 
 # # === Inisialisasi LMStudio Client ===
-# lms.configure_default_client(SERVER_API_HOST)
-# model = lms.llm(VLM_MODEL_NAME)
+lms.configure_default_client(SERVER_API_HOST)
+model = lms.llm(VLM_MODEL_NAME)
 
-# === Fungsi untuk menghitung CER ===
+"""##################### FUNGSI UNTUK MENGHITUNG CER #####################"""
 def calculate_cer(ground_truth, prediction):
     matcher = difflib.SequenceMatcher(None, ground_truth, prediction)
     opcodes = matcher.get_opcodes
@@ -34,10 +39,10 @@ def calculate_cer(ground_truth, prediction):
     N = len(ground_truth)
     CER = round((S + D + I) / N, 4)
     formula = f"CER = ({S}+{D}+{I}/{N})"
-    return CER, formula
+    return  f"{CER * 100:.2f}%"
  
 
-# === Load Ground Truth ===
+"""##################### MASUKKAN GROUND TRUTH #####################"""
 def load_ground_truth(csv_path):
     """Load ground truth from CSV into dictionary"""
     gt_dict = {}
@@ -46,45 +51,28 @@ def load_ground_truth(csv_path):
         for row in reader:
             gt_dict[row["image"]] = row["ground_truth"]
     return gt_dict
-
+"""##################### ENCODE GAMBAR KE BASE 64 #####################"""
 def encode_image_to_base64(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode("utf-8")
 
-# === Prediksi OCR dengan VLM ===
+"""##################### FUNGSI UNTUK MEMPREDIKSI OCR DENGAN VLM #####################"""
 def ocr_image(image_path):
-    """Send image to VLM and extract plate number"""
     try:
-        # encode image to base64
         image_base64 = encode_image_to_base64(image_path)
+        image_url = f"data:image/jpeg;base64,{image_base64}"
 
-        # prepare payload
-        payload = {
-            "model":VLM_MODEL_NAME,
-            "messages":[
-                {
-                    "role": "user",
-                    "content":[
-                        {
-                            "type": "image_url",
-                            "image_url":{
-                                "url":f"data:iamge/jpeg;base64,{image_base64}"
-                            }
-                        },
-                        {
-                            "type": "text",
-                            "text": "What is the license plate number shown in this image? Respond only with the plate number."
-                        }
-                    ]
-                }
-            ],
-            "stream": False
-        }
-
+        with open("payload.json","r") as f:
+            payload = json.load(f)
+            
+        payload["messages"][0]["content"][0]["image_url"]["url"] = image_url
+        
         response = requests.post(SERVER_URL,json=payload)
         response.raise_for_status()
+
         result = response.json()["choices"][0]["message"]["content"]
         return result.strip().replace(" ", "").upper()
+    
     except Exception as e:
         print(f"Error processing {os.path.basename(image_path)}: {str(e)}")
         return "ERROR"
@@ -118,7 +106,7 @@ def main():
             # print progress
             print(f"{image_name}=>GT:{gt_text} | pred:{pred_text} | CER{cer}")
 
-    print(f"\n✅ OCR selesai. Hasil disimpan di {OUTPUT_CSV}")
+    print(f"\n OCR selesai. Hasil disimpan di {OUTPUT_CSV}")
 
 if __name__ == "__main__":
     main()
