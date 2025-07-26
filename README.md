@@ -1,10 +1,10 @@
-# 🚘 VLM License Plate Recognition with LMStudio
+# VLM License Plate Recognition with LMStudio
 
 A simple yet powerful implementation of license plate recognition using a Visual Language Model (VLM) via [LMStudio](https://lmstudio.ai). This project uses the `qwen2-vl-2b-instruct` model to extract license plate numbers from images.
 
 ---
 
-## 📦 Features
+## Features
 
 - 🧠 Multimodal Inference with Qwen2-VL via LMStudio
 - 📸 OCR on Indonesian License Plates
@@ -13,7 +13,7 @@ A simple yet powerful implementation of license plate recognition using a Visual
 
 ---
 
-## ⚙️ Requirements
+## Requirements
 
 - [Python 3.10+](https://www.python.org/downloads/)
 - [LMStudio](https://lmstudio.ai)
@@ -21,7 +21,7 @@ A simple yet powerful implementation of license plate recognition using a Visual
 
 ---
 
-## 🧠 Model Setup (LMStudio)
+## Model Setup (LMStudio)
 
 1. **Install LMStudio**  
    Download from [https://lmstudio.ai](https://lmstudio.ai) and install it.

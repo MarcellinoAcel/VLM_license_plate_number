@@ -7,20 +7,21 @@ import requests
 from tqdm import tqdm
 import lmstudio as lms
 
-# === Konfigurasi ===
-DATASET_DIR = r"C:\Users\user\Documents\coding\python\computer_vision\VLM_license_plate_number\Indonesian License Plate Recognition Dataset\images\test"
-GROUND_TRUTH_CSV = r"C:\Users\user\Documents\coding\python\computer_vision\VLM_license_plate_number\Indonesian License Plate Recognition Dataset\ground_truth.csv"
+"""##################### Inisialisasi LMStudio Client #####################"""
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATASET_DIR = os.path.join(BASE_DIR, "Indonesian License Plate Recognition Dataset", "images", "test")
+GROUND_TRUTH_CSV = os.path.join(BASE_DIR, "ground_truth.csv")
 OUTPUT_CSV = "ocr_result.csv"
-SERVER_API_HOST = "localhost:1234"
 """
 Server bisa menggunakan
 * 127.0.0.1
 * localhost
 """
+SERVER_API_HOST = "localhost:1234"
 SERVER_URL = "http://localhost:1234/v1/chat/completions"
 VLM_MODEL_NAME = "qwen2-vl-2b-instruct"
 
-# # === Inisialisasi LMStudio Client ===
+"""##################### Inisialisasi LMStudio Client #####################"""
 lms.configure_default_client(SERVER_API_HOST)
 model = lms.llm(VLM_MODEL_NAME)
 
@@ -64,7 +65,7 @@ def ocr_image(image_path):
 
         with open("payload.json","r") as f:
             payload = json.load(f)
-            
+
         payload["messages"][0]["content"][0]["image_url"]["url"] = image_url
         
         response = requests.post(SERVER_URL,json=payload)
@@ -78,11 +79,11 @@ def ocr_image(image_path):
         return "ERROR"
 
 
-# === Main ===
+"""##################### Main #####################"""
 def main():
     ground_truths = load_ground_truth(GROUND_TRUTH_CSV)
     if not ground_truths:
-        print("❌ No ground truth data loaded. Exiting.")
+        print("No ground truth data loaded. Exiting.")
         return
     image_files = list(ground_truths.keys())
     
@@ -94,17 +95,13 @@ def main():
             image_path = os.path.join(DATASET_DIR, image_name)
             gt_text =ground_truths[image_name]
 
-            # Get Prediction
             pred_text = ocr_image(image_path)
 
-            # calculate CER
             cer = calculate_cer(gt_text, pred_text)
 
-            # Write results
             writer.writerow([image_name, gt_text, pred_text, cer])
 
-            # print progress
-            print(f"{image_name}=>GT:{gt_text} | pred:{pred_text} | CER{cer}")
+            print(f"\n{image_name}=>GT:{gt_text} | pred:{pred_text} | CER{cer}\n")
 
     print(f"\n OCR selesai. Hasil disimpan di {OUTPUT_CSV}")
 
