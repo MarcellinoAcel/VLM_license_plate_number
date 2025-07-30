@@ -82,11 +82,12 @@ python3 ground_truth_generate.py
 ```
 
 there should be a new file name ground_truth.csv, inside there the file should look like this
-
-image,ground_truth␣␣
-test001_1.jpg,B9140BCD␣␣
-test001_2.jpg,B2407UZO␣␣
-test001_3.jpg,B2842PKM␣␣
-test002_1.jpg,BG1352AE␣␣
+```bash
+image,ground_truth
+test001_1.jpg,B9140BCD
+test001_2.jpg,B2407UZO
+test001_3.jpg,B2842PKM
+test002_1.jpg,BG1352AE
+```
 
 
