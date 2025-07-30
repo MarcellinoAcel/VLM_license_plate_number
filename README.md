@@ -44,7 +44,8 @@ lms server start
 Indonesian License Plate Recognition Dataset/images/test
 ```
 ## Run the code
-1. **Run the Groundtruth**
+**Create Groundtruth**
+
    first thing first you need a ground truth to get the actuall value the.
 
    example:
@@ -66,4 +67,17 @@ Indonesian License Plate Recognition Dataset/images/test
     <td>B2842PKM</td>
   </tr>
 </table>
+
+**Or you can automate it**
+
+just run 
+```bash
+cd $YOUR PROJECT FOLDER
+python ground_truth_generate.py
+```
+or if you're in python3
+```bash
+cd $YOUR PROJECT FOLDER
+python3 ground_truth_generate.py
+```
 
