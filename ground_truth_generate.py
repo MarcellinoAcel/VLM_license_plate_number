@@ -1,10 +1,10 @@
 import os
 import csv
 
-BASE_DIR = r"C:\Users\user\Documents\coding\python\computer_vision\VLM_license_plate_number\Indonesian License Plate Recognition Dataset"
-IMAGE_DIR = os.path.join(BASE_DIR, "images/test")
-LABEL_DIR = os.path.join(BASE_DIR, "labels/test")
-CLASS_FILE = os.path.join(BASE_DIR, "classes.names")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+IMAGE_DIR = os.path.join(BASE_DIR, "Indonesian License Plate Recognition Dataset/images/test")
+LABEL_DIR = os.path.join(BASE_DIR, "Indonesian License Plate Recognition Dataset/labels/test")
+CLASS_FILE = os.path.join(BASE_DIR, "Indonesian License Plate Recognition Dataset/classes.names")
 OUTPUT_CSV = "ground_truth.csv"
 
 with open(CLASS_FILE, "r", encoding="utf-8")as f:
