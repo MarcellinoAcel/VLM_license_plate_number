@@ -4,20 +4,12 @@ A simple yet powerful implementation of license plate recognition using a Visual
 
 ---
 
-## Features
-
-- Multimodal Inference with Qwen2-VL via LMStudio
-- OCR on Indonesian License Plates
-- Evaluation with Ground Truth & Character Error Rate (CER)
-- Compatible with JSON-based configuration
-
----
-
 ## Requirements
 
 - [Python 3.10+](https://www.python.org/downloads/)
 - [LMStudio](https://lmstudio.ai)
 - A downloaded and running model (e.g., `qwen2-vl-2b-instruct`)
+- GPU available
 
 ---
 
@@ -120,7 +112,7 @@ then you'll have a new file name ocr_result.csv
   </tr>
 </table>
 
-it deosn't have to look like table above but it should be like 
+it doesn't have to look like table above but it should be like 
 ```bash
 image,ground_truth,prediction,CER_score
 test001_1.jpg,B9140BCD,B9140BCD,0.00%
