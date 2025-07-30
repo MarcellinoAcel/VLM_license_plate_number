@@ -6,10 +6,10 @@ A simple yet powerful implementation of license plate recognition using a Visual
 
 ## Features
 
-- 🧠 Multimodal Inference with Qwen2-VL via LMStudio
-- 📸 OCR on Indonesian License Plates
-- 📊 Evaluation with Ground Truth & Character Error Rate (CER)
-- ✅ Compatible with JSON-based configuration
+- Multimodal Inference with Qwen2-VL via LMStudio
+- OCR on Indonesian License Plates
+- Evaluation with Ground Truth & Character Error Rate (CER)
+- Compatible with JSON-based configuration
 
 ---
 
@@ -30,4 +30,8 @@ A simple yet powerful implementation of license plate recognition using a Visual
    Search and load `qwen2-vl-2b-instruct` in LMStudio.
 
 3. **Run LMStudio API Server**  
-   Make sure LMStudio is running and the API is available at:
+   Run the LMStudio server using command
+
+    curl -fsSL -o get-platformio.py https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py
+    python3 get-platformio.py
+    
