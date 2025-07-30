@@ -119,3 +119,11 @@ then you'll have a new file name ocr_result.csv
     <td>0.00%</td>
   </tr>
 </table>
+
+it deosn't have to look like table above but it should be like 
+```bash
+image,ground_truth,prediction,CER_score
+test001_1.jpg,B9140BCD,B9140BCD,0.00%
+test001_2.jpg,B2407UZO,B2407UZ0,12.50%
+test001_3.jpg,B2842PKM,B2842PKM,0.00%
+```
