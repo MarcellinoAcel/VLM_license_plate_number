@@ -34,4 +34,14 @@ A simple yet powerful implementation of license plate recognition using a Visual
 ```bash  
 lms server start
 ```
-4. **Open the folder where your code at**
+
+## Run the code
+1. **Run the Groundtruth**
+   first thing first you need a ground truth to get the actuall value the
+   example:
+   | Image        | Ground Truth |
+|--------------|--------------|
+| ![](images/test001_1.jpg) | B9140BCD     |
+| ![](images/test001_2.jpg) | B2407UZO     |
+| ![](images/test001_3.jpg) | B2842PKM     |
+
