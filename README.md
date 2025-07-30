@@ -39,9 +39,22 @@ lms server start
 1. **Run the Groundtruth**
    first thing first you need a ground truth to get the actuall value the
    example:
-   | Image        | Ground Truth |
-|--------------|--------------|
-| ![](images/test001_1.jpg) | B9140BCD     |
-| ![](images/test001_2.jpg) | B2407UZO     |
-| ![](images/test001_3.jpg) | B2842PKM     |
+<table>
+  <tr>
+    <th>Image</th>
+    <th>Ground Truth</th>
+  </tr>
+  <tr>
+    <td><img src="images/test001_1.jpg" width="100"></td>
+    <td>B9140BCD</td>
+  </tr>
+  <tr>
+    <td><img src="images/test001_2.jpg" width="100"></td>
+    <td>B2407UZO</td>
+  </tr>
+  <tr>
+    <td><img src="images/test001_3.jpg" width="100"></td>
+    <td>B2842PKM</td>
+  </tr>
+</table>
 
