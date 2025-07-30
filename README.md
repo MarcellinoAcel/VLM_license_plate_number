@@ -68,17 +68,12 @@ Indonesian License Plate Recognition Dataset/images/test
   </tr>
 </table>
 
-**Or you can automate it**
+Or you can automate it
 
 just run 
 ```bash
 cd $YOUR PROJECT FOLDER
 python ground_truth_generate.py
-```
-or if you're in python3
-```bash
-cd $YOUR PROJECT FOLDER
-python3 ground_truth_generate.py
 ```
 
 there should be a new file name ground_truth.csv, inside there the file should look like this
@@ -90,4 +85,37 @@ test001_3.jpg,B2842PKM
 test002_1.jpg,BG1352AE
 ```
 
+after that you can run.
 
+```bash
+python vlm.py
+```
+wait till finish
+
+then you'll have a new file name ocr_result.csv
+<table>
+  <tr>
+    <th>image</th>
+    <th>ground_truth</th>
+    <th>prediction</th>
+    <th>CER_score</th>
+  </tr>
+  <tr>
+    <td><img src="Indonesian License Plate Recognition Dataset\images\test\test001_1.jpg" width="100"></td>
+    <td>B9140BCD</td>
+    <td>B9140BCD</td>
+    <td>0.00%</td>
+  </tr>
+  <tr>
+    <td><img src="Indonesian License Plate Recognition Dataset\images\test\test001_2.jpg" width="100"></td>
+    <td>B9140BCD</td>
+    <td>B2407UZ0</td>
+    <td>12.50%</td>
+  </tr>
+  <tr>
+    <td><img src="Indonesian License Plate Recognition Dataset\images\test\test001_3.jpg" width="100"></td>
+    <td>B2842PKM</td>
+    <td>B2842PKM</td>
+    <td>0.00%</td>
+  </tr>
+</table>
