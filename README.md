@@ -45,15 +45,15 @@ lms server start
     <th>Ground Truth</th>
   </tr>
   <tr>
-    <td><img src="images/test001_1.jpg" width="100"></td>
+    <td><img src="Indonesian License Plate Recognition Dataset\images\test\test001_1.jpg" width="100"></td>
     <td>B9140BCD</td>
   </tr>
   <tr>
-    <td><img src="images/test001_2.jpg" width="100"></td>
+    <td><img src="Indonesian License Plate Recognition Dataset\images\test\test001_2.jpg" width="100"></td>
     <td>B2407UZO</td>
   </tr>
   <tr>
-    <td><img src="images/test001_3.jpg" width="100"></td>
+    <td><img src="Indonesian License Plate Recognition Dataset\images\test\test001_3.jpg" width="100"></td>
     <td>B2842PKM</td>
   </tr>
 </table>
