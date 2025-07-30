@@ -35,9 +35,16 @@ A simple yet powerful implementation of license plate recognition using a Visual
 lms server start
 ```
 
+## Dataset Setup
+**Go to this website and download the dataset**
+- [kaggle Dataset](https://www.kaggle.com/datasets/juanthomaswijaya/indonesian-license-plate-dataset)
+**You can delete the unnecessary folder, cause we only use**
+```bash
+Indonesian License Plate Recognition Dataset/images/test
+```
 ## Run the code
 1. **Run the Groundtruth**
-   first thing first you need a ground truth to get the actuall value the
+   first thing first you need a ground truth to get the actuall value the__
    example:
 <table>
   <tr>
