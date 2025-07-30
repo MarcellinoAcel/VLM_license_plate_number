@@ -31,7 +31,7 @@ A simple yet powerful implementation of license plate recognition using a Visual
 
 3. **Run LMStudio API Server**  
    Run the LMStudio server using command
-
-    curl -fsSL -o get-platformio.py https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py
-    python3 get-platformio.py
-    
+```bash  
+lms server start
+```
+4. **Open the folder where your code at**
